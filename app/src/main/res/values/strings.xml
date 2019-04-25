@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HelloAndroid</string>
+    <string name="name_hint">Please enter your name</string>
+    <string name="hello_button_label">Say Hello</string>
+    <string name="btn_hi">Say Hi</string>
+    <string name="greeting">Hello, %s!</string>
+    <string name="label_joke">Enjoy a Chuck Norris joke:</string>
+    <string name="label_btn_joke">Get a new joke</string>
+    <string name="label_main_joke">Get a Chuck Norris joke</string>
+</resources>
