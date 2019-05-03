@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.johnny.helloandroid.model.ChuckNorrisJoke;
 
 public class MainActivity extends Activity {
 
@@ -57,6 +61,26 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.putExtra(MAIN_ACTIVITY_EXTRA, name);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_go_to_joke:
+                startActivity(new Intent(this, ChuckNorrisJokeActivity.class));
+                return true;
+            case R.id.preferences:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //Overriding the below methods only to log the different states of the application, depending on the device state

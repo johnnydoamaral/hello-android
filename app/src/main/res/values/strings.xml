@@ -7,4 +7,6 @@
     <string name="label_joke">Enjoy a Chuck Norris joke:</string>
     <string name="label_btn_joke">Get a new joke</string>
     <string name="label_main_joke">Get a Chuck Norris joke</string>
+    <string name="go_to_joke">Go to joke</string>
+    <string name="settings">Settings</string>
 </resources>

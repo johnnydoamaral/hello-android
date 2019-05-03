@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_go_to_joke"
+        android:icon="@android:drawable/ic_media_next"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/go_to_joke" />
+
+    <item
+        android:id="@+id/preferences"
+        android:showAsAction="never"
+        android:title="@string/settings" />
+
+</menu>
