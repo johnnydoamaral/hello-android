@@ -28,7 +28,7 @@
     <LinearLayout
         style="?android:buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
@@ -48,5 +48,13 @@
             android:text="@string/hello_button_label" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_main_joke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:text="@string/label_main_joke"/>
 
 </LinearLayout>
