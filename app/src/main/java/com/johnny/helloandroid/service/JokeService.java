@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class JokeService {
 
-    private static final String URL = "http://api.icndb.com/jokes/random";
+    private static final String URL = "https://api.icndb.com/jokes/random";
     private RestTemplate template = new RestTemplate();
 
     //IMPORTANT: for this to work, you need to add internet permission (android.permission.INTERNET)
