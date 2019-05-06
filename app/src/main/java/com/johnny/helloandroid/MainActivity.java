@@ -2,7 +2,9 @@ package com.johnny.helloandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +30,8 @@ public class MainActivity extends Activity {
         Log.d(TAG, "onCreate");
 
         textView = findViewById(R.id.tv_label);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        textView.setText("Hello " + sharedPreferences.getString("username", "World"));
         editText = findViewById(R.id.et_name);
 
         Button helloButton = findViewById(R.id.btn_name);
