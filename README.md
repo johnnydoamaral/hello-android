@@ -12,3 +12,5 @@ This is a very simple Android project to demonstrate the use of:
 * Database access (SQLite)
 * Rest API consumption (using Spring restTemplate)
 * Application behavior while interacting with the phone
+* SharedPreferences/PreferenceFragment
+* ActionBar
