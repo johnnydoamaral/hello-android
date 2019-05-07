@@ -1,6 +1,7 @@
 package com.johnny.helloandroid;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ public class WelcomeActivity extends Activity {
     public static final String TAG = WelcomeActivity.class.getSimpleName();
     private DatabaseAdapter adapter;
     private TextView nameTextView;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,12 @@ public class WelcomeActivity extends Activity {
             adapter.insertName(name);
 
         populateNamesListView();
+
+        DialogFragment fragment = new NameFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString("name", name);
+        fragment.setArguments(arguments);
+        fragment.show(getFragmentManager(), null);
     }
 
     private void populateNamesListView() {
@@ -54,8 +62,9 @@ public class WelcomeActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "Item at index " + position + " clicked");
-                nameTextView.setText(String.format(getString(R.string.greeting), names.get(position)));
-                Toast.makeText(getApplicationContext(), names.get(position) + " was clicked.", Toast.LENGTH_SHORT).show();
+                name = names.get(position);
+                nameTextView.setText(String.format(getString(R.string.greeting), name));
+                Toast.makeText(getApplicationContext(), name + " was clicked.", Toast.LENGTH_SHORT).show();
             }
         });
     }
