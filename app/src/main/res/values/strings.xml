@@ -10,4 +10,6 @@
     <string name="go_to_joke">Go to joke</string>
     <string name="settings">Settings</string>
     <string name="label_pref_name">Your name:</string>
+    <string name="label_food_quiz">Food Quiz</string>
+    <string name="label_rate_food">Click on any item to rate it:</string>
 </resources>

@@ -2,11 +2,13 @@ package com.johnny.helloandroid;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ public class WelcomeActivity extends Activity {
     private DatabaseAdapter adapter;
     private TextView nameTextView;
     private String name;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,14 @@ public class WelcomeActivity extends Activity {
             adapter.insertName(name);
 
         populateNamesListView();
+
+        button = findViewById(R.id.btn_food_quiz);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FoodQuizActivity.class));
+            }
+        });
 
         DialogFragment fragment = new NameFragment();
         Bundle arguments = new Bundle();
