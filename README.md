@@ -14,3 +14,4 @@ This is a very simple Android project to demonstrate the use of:
 * Application behavior while interacting with the phone
 * SharedPreferences/PreferenceFragment
 * ActionBar
+* AlertDialogs
