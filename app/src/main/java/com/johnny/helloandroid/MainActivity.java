@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.johnny.helloandroid.model.ChuckNorrisJoke;
-
 public class MainActivity extends Activity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
