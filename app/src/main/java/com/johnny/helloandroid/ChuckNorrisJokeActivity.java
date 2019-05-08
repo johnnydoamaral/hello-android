@@ -3,17 +3,12 @@ package com.johnny.helloandroid;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.johnny.helloandroid.model.ChuckNorrisJoke;
 import com.johnny.helloandroid.service.JokeService;
 import com.johnny.helloandroid.util.AndroidUtil;
-
-import org.springframework.http.converter.json.GsonHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
 public class ChuckNorrisJokeActivity extends Activity {
 

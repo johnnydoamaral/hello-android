@@ -1,8 +1,6 @@
 package com.johnny.helloandroid;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 public class PrefsFragment extends PreferenceFragment {
