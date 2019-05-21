@@ -15,3 +15,6 @@ This is a very simple Android project to demonstrate the use of:
 * SharedPreferences/PreferenceFragment
 * ActionBar
 * AlertDialogs
+* ShareActionProvider
+* Handlers
+* AsyncTasks
