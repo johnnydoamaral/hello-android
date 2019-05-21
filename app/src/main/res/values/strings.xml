@@ -13,4 +13,5 @@
     <string name="label_food_quiz">Food Quiz</string>
     <string name="label_rate_food">Click on any item to rate it:</string>
     <string name="title_food_rating_dialog">Food rating alert</string>
+    <string name="label_share_joke">Share</string>
 </resources>
