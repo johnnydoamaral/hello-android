@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,12 @@ public class ChuckNorrisJokeActivity extends Activity {
     private TextView jokeContainer;
     private JokeService service = new JokeService();
     private AsyncTask<Void, Void, String> task;
+    private AsyncTask<Void, Void, String> standByTask;
     private ShareActionProvider shareActionProvider;
+    private static final String DEFAULT_STANDBY_MSG = "Waiting for joke.";
+    private static final String STANDBY_MSG_AFTER_INTERVAL_REACHED = "Waiting for joke....";
+    private StringBuilder currentStandbyMsg = new StringBuilder(DEFAULT_STANDBY_MSG);
+    private boolean jokeButtonClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +37,21 @@ public class ChuckNorrisJokeActivity extends Activity {
 
         getJokeButton = findViewById(R.id.btn_new_joke);
         jokeContainer = findViewById(R.id.tv_joke);
+        jokeContainer.setText(DEFAULT_STANDBY_MSG);
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                standByTask = new StandbyTask().execute();
+                if (!jokeButtonClicked)
+                    handler.postDelayed(this, 1500);
+            }
+        });
 
         getJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                jokeButtonClicked = true;
                 task = new JokeTask().execute();
             }
         });
@@ -45,10 +62,33 @@ public class ChuckNorrisJokeActivity extends Activity {
         protected String doInBackground(Void... voids) {
             return service.getRandomJoke();
         }
+
         @Override
         protected void onPostExecute(String result) {
             jokeContainer.setText(result);
             setIntent(result);
+        }
+    }
+
+    private class StandbyTask extends AsyncTask<Void, Void, String> {
+
+        public static final String DOT = ".";
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            if (!currentStandbyMsg.toString().equals(STANDBY_MSG_AFTER_INTERVAL_REACHED))
+                currentStandbyMsg.append(DOT);
+            else {
+                currentStandbyMsg.delete(0, currentStandbyMsg.length());
+                currentStandbyMsg.append(DEFAULT_STANDBY_MSG);
+            }
+            return currentStandbyMsg.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String text) {
+            if (!jokeButtonClicked)
+                jokeContainer.setText(text);
         }
     }
 
@@ -60,7 +100,7 @@ public class ChuckNorrisJokeActivity extends Activity {
         return true;
     }
 
-    private void setIntent(String joke){
+    private void setIntent(String joke) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, joke);
